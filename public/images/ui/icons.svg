@@ -1,0 +1,7 @@
+---
+const { name = 'typing test' } = Astro.props;
+---
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute">
+  <symbol id="icon-flame" viewBox="0 0 24 24"><path d="M12 2c2 3 3 4.5 3 7a3 3 0 1 1-6 0c0-2.5 1-4 3-7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-speed" viewBox="0 0 24 24"><path d="M5 15l4-4 3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 7h5v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>

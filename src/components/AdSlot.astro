@@ -1,0 +1,10 @@
+---
+const { slotId = 'generic', size = 'banner', label = 'Advertisement' } = Astro.props;
+const isEnabled = !!import.meta.env.PUBLIC_ADSENSE_CLIENT;
+---
+{isEnabled && (
+  <div class="ad-slot" data-slot={slotId} data-size={size} aria-label={label}>
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-box">{label}</div>
+  </div>
+)}

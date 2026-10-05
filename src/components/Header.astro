@@ -1,0 +1,26 @@
+---
+
+const navItems = [
+  { href: '/', label: 'Typing Test' },
+  { href: '/typing-practice/', label: 'Practice' },
+  { href: '/typing-games/', label: 'Games' },
+  { href: '/wpm-calculator/', label: 'WPM Test' },
+  { href: '/typing-guides/', label: 'Guides' },
+];
+---
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="/" class="brand" aria-label="TypeMeter home">
+      <img src="/images/brand/wordmark-light.svg" alt="TypeMeter" class="brand-mark" />
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      {navItems.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+    <div class="header-actions">
+      <a href="/typing-games/type-snap/leaderboard/" class="icon-link" aria-label="Type Snap leaderboard">Leaderboard</a>
+      <ThemeToggle />
+    </div>
+  </div>
+</header>

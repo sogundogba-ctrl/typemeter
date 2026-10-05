@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import TypingTest from '../components/TypingTest.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { passageLibrary } from '../lib/typing/passages';
+const samplePassage = passageLibrary[0];
+---
+<BaseLayout title="Typing Speed Test – Free WPM Test Online | TypeMeter" description="Test your typing speed and accuracy with our free online typing test. Find your WPM, typing accuracy, errors and typing speed instantly. No signup required.">
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Free typing speed test</p>
+      <h1>Free Typing Speed Test</h1>
+      <p class="hero-sub">Measure WPM, accuracy and errors with a fast, focused typing test built for daily practice.</p>
+    </div>
+    <TypingTest passage={samplePassage.text} />
+  </section>
+
+  <AdSlot slotId="home-top" size="banner" label="Home banner" />
+
+  <section class="feature-block">
+    <div class="section-heading">
+      <p class="eyebrow">Practice and improve</p>
+      <h2>Daily typing work that stays practical</h2>
+    </div>
+    <div class="link-grid three-up">
+      <a href="/typing-practice/">Typing Practice</a>
+      <a href="/wpm-calculator/">WPM Calculator</a>
+      <a href="/typing-games/type-snap/">Type Snap</a>
+    </div>
+  </section>
+
+  <section class="feature-block">
+    <div class="section-heading">
+      <p class="eyebrow">Typing games</p>
+      <h2>Short, sharp games built around real typing skill</h2>
+    </div>
+    <div class="link-grid two-up">
+      <a href="/typing-games/type-snap/">Type Snap</a>
+      <a href="/typing-games/">All games</a>
+    </div>
+  </section>
+
+  <section class="content-grid">
+    <article>
+      <h3>How it works</h3>
+      <p>Type the passage as accurately as you can. The timer starts on your first valid key, and the test records your WPM, accuracy and errors in real time.</p>
+    </article>
+    <article>
+      <h3>How WPM is calculated</h3>
+      <p>WPM uses correct characters divided by five over elapsed minutes. Raw WPM includes all typed characters, while accuracy isolates the share of keystrokes that were correct.</p>
+    </article>
+    <article>
+      <h3>What is a good score?</h3>
+      <p>For a one-minute test, a typical beginner range is around 20–40 WPM, while stronger typists often exceed 60 WPM with sustained accuracy.</p>
+    </article>
+  </section>
+
+  <section class="faq-block">
+    <div class="section-heading">
+      <p class="eyebrow">FAQ</p>
+      <h2>Common questions</h2>
+    </div>
+    <details open>
+      <summary>Does the app store my results?</summary>
+      <p>Results are kept in local storage in your browser so your device remembers recent results and personal bests.</p>
+    </details>
+    <details>
+      <summary>Can I practice with difficulty settings?</summary>
+      <p>Yes. The typing test supports several difficulty tiers and text categories for more targeted practice.</p>
+    </details>
+  </section>
+</BaseLayout>

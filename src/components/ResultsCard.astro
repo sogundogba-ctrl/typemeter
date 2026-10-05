@@ -1,0 +1,8 @@
+---
+const { title, subtitle, value, accent } = Astro.props;
+---
+<div class="metric-box" style={`--accent: ${accent};`}>
+  <span class="metric-label">{title}</span>
+  <strong>{value}</strong>
+  <small>{subtitle}</small>
+</div>

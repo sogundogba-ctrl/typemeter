@@ -1,0 +1,51 @@
+---
+const { passage } = Astro.props;
+const words = passage.split(/\s+/).slice(0, 80);
+---
+<div class="typing-shell">
+  <div class="toolbar">
+    <span>Mode: Time</span>
+    <span>Duration: 60s</span>
+    <span>Difficulty: Intermediate</span>
+  </div>
+  <div class="typing-box" tabindex="0" role="textbox" aria-label="Typing test input area">
+    <p class="passage">{words.join(' ')}</p>
+  </div>
+  <div class="results-row">
+    <span>WPM <strong id="wpm-value">0.0</strong></span>
+    <span>Accuracy <strong id="accuracy-value">100%</strong></span>
+    <span>Errors <strong id="errors-value">0</strong></span>
+  </div>
+  <div class="actions">
+    <button type="button">Restart</button>
+    <button type="button">New text</button>
+  </div>
+</div>
+<script>
+  const typingBox = document.querySelector('.typing-box');
+  const passageText = document.querySelector('.passage')?.textContent ?? '';
+  const wpmValue = document.getElementById('wpm-value');
+  const accuracyValue = document.getElementById('accuracy-value');
+  const errorsValue = document.getElementById('errors-value');
+  let totalTyped = 0;
+  let correct = 0;
+  let errors = 0;
+  typingBox?.addEventListener('keydown', () => {
+    const value = (typingBox as HTMLElement).textContent || '';
+    totalTyped += 1;
+    if (value.length > 0 && value[value.length - 1] === ' ') {
+      correct += 1;
+    } else {
+      const expected = passageText[totalTyped - 1];
+      if (expected === value[value.length - 1]) {
+        correct += 1;
+      } else {
+        errors += 1;
+      }
+    }
+    const accuracy = totalTyped === 0 ? 100 : (correct / totalTyped) * 100;
+    wpmValue.textContent = (correct / 5 / 1).toFixed(1);
+    accuracyValue.textContent = `${accuracy.toFixed(1)}%`;
+    errorsValue.textContent = String(errors);
+  });
+</script>

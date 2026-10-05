@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="WPM Calculator | TypeMeter" description="Calculate words per minute, raw WPM and accuracy from your typed input and timing data.">
+  <article class="page-shell narrow">
+    <p class="eyebrow">Calculator</p>
+    <h1>WPM Calculator</h1>
+    <p>Use this tool when you already know your raw counts. It keeps the same formula as the typing test so you can compare numbers consistently.</p>
+    <div class="calculator-box">
+      <label>
+        Characters typed
+        <input type="number" value="300" id="characters" />
+      </label>
+      <label>
+        Errors
+        <input type="number" value="10" id="errors" />
+      </label>
+      <label>
+        Minutes elapsed
+        <input type="number" min="0.01" step="0.01" value="1" id="minutes" />
+      </label>
+      <button id="calculate-btn" type="button">Calculate</button>
+    </div>
+    <div id="calculator-output" class="result-grid"></div>
+  </article>
+  <script>
+    import { calculateMetrics } from '../lib/typing/metrics.ts';
+    const btn = document.getElementById('calculate-btn');
+    const output = document.getElementById('calculator-output');
+    const render = () => {
+      const characters = Number((document.getElementById('characters') as HTMLInputElement)?.value || 0);
+      const errors = Number((document.getElementById('errors') as HTMLInputElement)?.value || 0);
+      const minutes = Number((document.getElementById('minutes') as HTMLInputElement)?.value || 0);
+      const result = calculateMetrics({ correctCharacters: Math.max(0, characters - errors), incorrectCharacters: errors, totalTypedCharacters: characters, elapsedMs: minutes * 60000, finalErrors: errors, totalMistakes: errors, correctedMistakes: 0 });
+      output.innerHTML = `
+        <div><strong>${result.wpm.toFixed(1)}</strong><span>WPM</span></div>
+        <div><strong>${result.rawWpm.toFixed(1)}</strong><span>Raw WPM</span></div>
+        <div><strong>${result.accuracy.toFixed(1)}%</strong><span>Accuracy</span></div>
+      `;
+    };
+    btn?.addEventListener('click', render);
+    render();
+  </script>
+</BaseLayout>

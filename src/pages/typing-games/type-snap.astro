@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Type Snap – Fast Typing Reaction Game | TypeMeter" description="Play Type Snap, a fast word-by-word typing reaction game with score, accuracy and difficulty settings.">
+  <article class="page-shell narrow">
+    <p class="eyebrow">Typing game</p>
+    <h1>Type Snap</h1>
+    <p>One word appears at a time. Finish it accurately and quickly to build your score. Mistakes cost time, speed and accuracy.</p>
+    <div class="game-panel">
+      <h2>How scoring works</h2>
+      <p>Every word is scored by speed, accuracy and difficulty. A faster completion time improves the score, while errors reduce it. Difficulty multiplies the base score, and rankings are based on the same deterministic formula on both the client and the server.</p>
+      <p><strong>Formula:</strong> score = basePoints × difficultyMultiplier × accuracyFactor − mistakesPenalty.</p>
+    </div>
+  </article>
+</BaseLayout>
