@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const options = ['Time', 'Words'];
+---
+<BaseLayout title="TypeMeter Demo | TypeMeter" description="A demo of core controls and UI states for the TypeMeter interface.">
+  <article class="page-shell">
+    <p class="eyebrow">Component demo</p>
+    <h1>Interface controls</h1>
+
+    <section class="demo-block">
+      <h2>Segmented control</h2>
+      <div class="segmented-demo">
+        {options.map((option) => (
+          <button type="button" class="segmented-option" aria-pressed={option === 'Time'}>{option}</button>
+        ))}
+      </div>
+    </section>
+
+    <section class="demo-block">
+      <h2>Dropdown</h2>
+      <button type="button" class="dropdown-trigger">Duration: 60s</button>
+    </section>
+
+    <section class="demo-block">
+      <h2>Theme</h2>
+      <button type="button" class="theme-button">Toggle theme</button>
+    </section>
+
+    <section class="demo-block">
+      <h2>Cards</h2>
+      <div class="demo-grid">
+        <div class="panel"><strong>WPM</strong><span>60</span></div>
+        <div class="panel"><strong>Accuracy</strong><span>96%</span></div>
+        <div class="panel"><strong>Errors</strong><span>2</span></div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

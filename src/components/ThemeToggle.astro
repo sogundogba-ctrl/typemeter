@@ -1,19 +1,24 @@
 ---
-
+const { label = 'Toggle theme' } = Astro.props;
 ---
-<button class="theme-button" type="button" aria-label="Toggle theme">
-  Light / Dark
+<button type="button" class="theme-button" aria-label={label} aria-pressed="false">
+  <span class="theme-icon-wrap"><Icon name="sun" size={16} /></span>
+  <span>Theme</span>
 </button>
 <script>
-  const toggle = document.querySelector('.theme-button');
+  const button = document.querySelector('.theme-button');
   const root = document.documentElement;
   const applyTheme = (theme) => {
     root.dataset.theme = theme;
     localStorage.setItem('typemeter-theme', theme);
+    const icon = button?.querySelector('.theme-icon-wrap');
+    if (icon) {
+      icon.innerHTML = theme === 'dark' ? '<svg ...></svg>' : '<svg ...></svg>';
+    }
   };
-  const currentTheme = localStorage.getItem('typemeter-theme') || 'light';
-  applyTheme(currentTheme);
-  toggle?.addEventListener('click', () => {
+  const current = localStorage.getItem('typemeter-theme') || 'light';
+  applyTheme(current);
+  button?.addEventListener('click', () => {
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
     applyTheme(next);
   });
